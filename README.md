@@ -88,7 +88,6 @@ signature.toString()
 Constructor:
 
 - new Signature( options )
-
 - Signature.create( options )
 - Signature.parse( header )
 
