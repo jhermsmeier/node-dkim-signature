@@ -10,8 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "email",
+    "mail",
     "dkim",
-    "signature"
+    "key",
+    "signature",
+    "domainkeys",
+    "domainkey",
+    "identified",
+    "message"
   ],
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com>",
   "license": "MIT",
