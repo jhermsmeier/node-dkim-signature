@@ -1,8 +1,8 @@
 # DomainKeys Identified Mail (DKIM) Signature
-[![npm](http://img.shields.io/npm/v/dkim-signature.svg?style=flat-square)](https://npmjs.com/dkim-signature)
-[![npm](http://img.shields.io/npm/l/dkim-signature.svg?style=flat-square)](https://npmjs.com/dkim-signature)
-[![npm downloads](http://img.shields.io/npm/dm/dkim-signature.svg?style=flat-square)](https://npmjs.com/dkim-signature)
-[![build status](http://img.shields.io/travis/jhermsmeier/node-dkim-signature.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-dkim-signature)
+[![npm](https://img.shields.io/npm/v/dkim-signature.svg?style=flat-square)](https://npmjs.com/dkim-signature)
+[![npm](https://img.shields.io/npm/l/dkim-signature.svg?style=flat-square)](https://npmjs.com/dkim-signature)
+[![npm downloads](https://img.shields.io/npm/dm/dkim-signature.svg?style=flat-square)](https://npmjs.com/dkim-signature)
+[![build status](https://img.shields.io/travis/jhermsmeier/node-dkim-signature.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-dkim-signature)
 
 ## Install via [npm](https://npmjs.com)
 
