@@ -1,14 +1,8 @@
 {
   "name": "dkim-signature",
   "version": "1.1.0",
-  "description": "DKIM (DomainKey Identified Mail) Signature",
-  "main": "lib/signature",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "DomainKey Identified Mail (DKIM) Signature",
+  "license": "MIT",
   "keywords": [
     "email",
     "mail",
@@ -17,17 +11,28 @@
     "signature",
     "domainkeys",
     "domainkey",
-    "identified",
     "message"
   ],
-  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com>",
-  "license": "MIT",
+  "main": "lib/signature.js",
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
+  "dependencies": {},
+  "devDependencies": {
+    "matcha": "~0.6.1",
+    "mocha": "~2.4.5"
+  },
+  "scripts": {
+    "test": "mocha",
+    "benchmark": "matcha"
+  },
+  "homepage": "https://github.com/jhermsmeier/node-dkim-signature",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhermsmeier/node-dkim-signature.git"
+    "url": "git+https://github.com/jhermsmeier/node-dkim-signature.git"
   },
   "bugs": {
     "url": "https://github.com/jhermsmeier/node-dkim-signature/issues"
   },
-  "homepage": "https://github.com/jhermsmeier/node-dkim-signature"
+  "directories": {
+    "test": "test"
+  }
 }
