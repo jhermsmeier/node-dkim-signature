@@ -67,7 +67,6 @@ suite( 'DKIMSignature', function() {
         'Date',
         'MIME-Version',
         'Content-Type',
-        'subject',
         'From',
         'Subject',
         'Date',
