@@ -39,7 +39,6 @@ suite( 'DKIMSignature', function() {
       
     })
     
-
     test( 'Mandrill Mail With Spaces', function() {
       
       var header = `v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
@@ -75,7 +74,6 @@ suite( 'DKIMSignature', function() {
       ])
       
     })
-
 
   })
   
