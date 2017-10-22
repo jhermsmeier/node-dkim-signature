@@ -39,6 +39,45 @@ suite( 'DKIMSignature', function() {
       
     })
     
+
+    test( 'Mandrill Mail With Spaces', function() {
+      
+      var header = `v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com;
+      i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1508540429; h=From :
+      Sender : Subject : To : Message-Id : Date : MIME-Version : Content-Type
+      : From : Subject : Date : X-Mandrill-User : List-Unsubscribe;
+      bh=ETZ1UqfGj/jZdVFwmNQQZ62c8njGJ6eC7j3Hpr7A6Ao=;
+      b=GDtwx8ATyFwiQZ/wqz8MTyaYaEFZ5MmDhD4X+0oCK5+FTko9yl2cnC+w+7OxkysOIfxopd /fdkH1Ads3fqNyB88pegcoV07cT2UxFMFmlebzn7lV8PJY26lqqesf7qLSoZlR5PwzeFiIU4 UEm6Gbvw4LGpnKdL2+T9hgAD+4mVM=`
+      
+      var signature = DKIMSignature.parse( header )
+      
+      assert.ok( signature )
+      assert.equal( signature.algorithm, 'rsa-sha256' )
+      assert.equal( signature.canonical, 'relaxed/relaxed' )
+      assert.equal( signature.domain, 'mandrillapp.com' )
+      assert.equal( signature.query, 'dns/txt' )
+      assert.equal( signature.selector, 'mandrill' )
+      assert.equal( signature.version, '1' )
+      assert.deepEqual( signature.headers, [
+        'From',
+        'Sender',
+        'Subject',
+        'To',
+        'Message-Id',
+        'Date',
+        'MIME-Version',
+        'Content-Type',
+        'subject',
+        'From',
+        'Subject',
+        'Date',
+        'X-Mandrill-User',
+        'List-Unsubscribe'
+      ])
+      
+    })
+
+
   })
   
 })
