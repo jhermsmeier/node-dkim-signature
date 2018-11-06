@@ -17,6 +17,7 @@ var DKIMSignature = require( 'dkim-signature' )
 ```
 
 Suppose you have the content of the `DKIM-Signature` email header:
+
 ```
 v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20120113;
@@ -31,6 +32,7 @@ v=1; a=rsa-sha256; c=relaxed/relaxed;
 ```
 
 Parse the signature header:
+
 ```js
 var signature = DKIMSignature.parse( header )
 ```
@@ -63,6 +65,7 @@ var signature = DKIMSignature.parse( header )
 ```
 
 Or create a signature header:
+
 ```js
 var signature = new DKIMSignature({
   algorithm: 'rsa-sha256',
