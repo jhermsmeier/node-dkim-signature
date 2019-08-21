@@ -15,6 +15,7 @@
     "message"
   ],
   "main": "lib/signature.js",
+  "types": "lib/signature.d.ts",
   "scripts": {
     "test": "mocha --ui tdd",
     "benchmark": "node benchmark"
