@@ -1,0 +1,15 @@
+# Ignore all dotfiles by default
+.*
+
+# Don't ignore these dotfiles
+!.editorconfig
+!.gitignore
+!.npmrc
+
+# Don't commit lockfiles for packages
+# that are not standalone applications
+package-lock.json
+yarn.lock
+
+# Don't track dependencies
+node_modules
