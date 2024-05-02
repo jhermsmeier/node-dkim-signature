@@ -17,13 +17,12 @@
   "main": "lib/signature.js",
   "types": "lib/signature.d.ts",
   "scripts": {
-    "test": "mocha --ui tdd",
+    "test": "control test",
     "benchmark": "node benchmark"
   },
-  "dependencies": {},
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "nanobench": "^2.1.1"
+    "@jhermsmeier/control": "2.0.3",
+    "nanobench": "2.1.1"
   },
   "homepage": "https://github.com/jhermsmeier/node-dkim-signature",
   "repository": {

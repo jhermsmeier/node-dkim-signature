@@ -1,9 +1,9 @@
 var DKIMSignature = require( '..' )
 var assert = require( 'assert' )
 
-suite( 'DKIMSignature', function() {
+context( 'DKIMSignature', function() {
   
-  suite( '.parse()', function() {
+  context( '.parse()', function() {
     
     test( 'Google Mail', function() {
       
