@@ -4,6 +4,7 @@
 # Don't ignore these dotfiles
 !.editorconfig
 !.gitignore
+!.npmignore
 !.npmrc
 
 # Don't commit lockfiles for packages
