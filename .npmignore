@@ -1,3 +1,6 @@
 .*
+*.md
+*.log
+
 test
 benchmark
