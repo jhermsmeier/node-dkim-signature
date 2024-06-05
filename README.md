@@ -12,38 +12,38 @@ $ npm install dkim-signature
 ## Usage
 
 ```js
-var DKIMSignature = require( 'dkim-signature' )
+const DKIMSignature = require( 'dkim-signature' )
 ```
 
-Suppose you have the content of the `DKIM-Signature` email header:
-
-```
-v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20120113;
- h=mime-version:date:message-id:subject:from:to:content-type;
- bh=DrlXO8ocnosZnW5ZN7P4S/fIdR8vwHj0TyzoPISZF2Q=;
- b=gOHBExs2JcJFRrozPDw88Js0dc0AHOo6YTZqrDTedfcK/jM/mxfu5rfVzuUnKAGiS5
- ZvRvXvwYjIW0B9t0DDHDOs5soIukuEXeUw9OV2QD8qc5pmOShuRQWyW5pRftTF87omkj
- gV2Eik5K2f8FpNlyvuLDjMUmyP8RpLaRrii6+kRRsoJzzP41IqALmlLmJfvtnkeu5kM0
- v4XnQ4hBNcaLuCmq3fZfCQFDexofECQOZ8FWE0VfdASG8HOJ6jgxuKwYtNfy11ySUSrI
- wFFlrjTfiNqSD9nzQns3j+xXLtqsvviJQXJgkC8O6mLel3GDwm8LHzBoszzqZ/FiL4rg
- Vdfw==
-```
-
-Parse the signature header:
+### Parsing Signature Records
 
 ```js
-var signature = DKIMSignature.parse( header )
+const value = `v=1; a=rsa-sha256; c=relaxed/relaxed;\r
+ d=example.test; s=20240605; i=@example.test;\r
+ h=mime-version:date:message-id:subject:from:to:content-type;\r
+ bh=DrlXO8ocnosZnW5ZN7P4S/fIdR8vwHj0TyzoPISZF2Q=;\r
+ b=gOHBExs2JcJFRrozPDw88Js0dc0AHOo6YTZqrDTedfcK/jM/mxfu5rfVzuUnKAGiS5\r
+ ZvRvXvwYjIW0B9t0DDHDOs5soIukuEXeUw9OV2QD8qc5pmOShuRQWyW5pRftTF87omkj\r
+ gV2Eik5K2f8FpNlyvuLDjMUmyP8RpLaRrii6+kRRsoJzzP41IqALmlLmJfvtnkeu5kM0\r
+ v4XnQ4hBNcaLuCmq3fZfCQFDexofECQOZ8FWE0VfdASG8HOJ6jgxuKwYtNfy11ySUSrI\r
+ wFFlrjTfiNqSD9nzQns3j+xXLtqsvviJQXJgkC8O6mLel3GDwm8LHzBoszzqZ/FiL4rg\r
+ Vdfw==\r
+`
 ```
 
 ```js
-{
+const signature = DKIMSignature.parse( value )
+```
+
+```js
+DKIMSignature {
+  version: 1,
   algorithm: 'rsa-sha256',
-  canonical: 'relaxed/relaxed',
-  copiedHeaders: [],
-  domain: 'gmail.com',
-  expires: null,
-  hash: <Buffer 0e b9 57 3b ca 1c 9e 8b 19 9d 6e 59 37 b3 ...>,
+  domain: 'example.test',
+  selector: '20240605',
+  identifier: '@example.test',
+  queryMethods: [ 'dns/txt' ],
+  canonicalization: [ 'relaxed', 'relaxed' ],
   headers: [
     'mime-version',
     'date',
@@ -53,49 +53,30 @@ var signature = DKIMSignature.parse( header )
     'to',
     'content-type'
   ],
-  identity: null,
-  length: null,
-  query: null,
-  selector: '20120113',
-  signature: <Buffer 80 e1 c1 13 1b 36 25 c2 45 46 ba 33 3c ...>,
-  timestamp: null,
-  version: '1'
+  copiedHeaders: undefined,
+  createdAt: undefined,
+  expiresAt: undefined,
+  bodyLength: undefined,
+  bodyHash: 'DrlXO8ocnosZnW5ZN7P4S/fIdR8vwHj0TyzoPISZF2Q=',
+  data: 'gOHBExs2JcJFRrozPDw88Js0dc0AHOo6YTZqrDTedfcK/jM/mxfu5rfVzuUnKAGiS5ZvRvXvwYjIW0B9t0DDHDOs5soIukuEXeUw9OV2QD8qc5pmOShuRQWyW5pRftTF87omkjgV2Eik5K2f8FpNlyvuLDjMUmyP8RpLaRrii6+kRRsoJzzP41IqALmlLmJfvtnkeu5kM0v4XnQ4hBNcaLuCmq3fZfCQFDexofECQOZ8FWE0VfdASG8HOJ6jgxuKwYtNfy11ySUSrIwFFlrjTfiNqSD9nzQns3j+xXLtqsvviJQXJgkC8O6mLel3GDwm8LHzBoszzqZ/FiL4rgVdfw==',
+  unknownTags: undefined
 }
 ```
 
-Or create a signature header:
+### Stringifying
 
 ```js
-var signature = new DKIMSignature({
+const signature = new DKIMSignature({
+  domain: 'example.test',
+  selector: 'default',
   algorithm: 'rsa-sha256',
-  canonical: 'simple/relaxed',
-  domain: 'into.space',
-  headers: [
-    'mime-version',
-    'date',
-    'message-id',
-    'subject',
-    ...
-  ],
-  selector: '20120113',
-  signature: <Buffer 80 e1 c1 13 1b 36 25 c2 45 46 ba 33 3c ...>,
-  version: '1'
+  headers: [ 'from', 'to', 'date', 'subject' ],
+  bodyHash: '2jmj7l5rSw0yVb/vlWAYkK/YBwk=',
+  data: '47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
 })
 ```
 
-```js
-signature.toString()
+```console
+> console.log( signature.toString() )
+v=1; a=rsa-sha256; d=example.test; s=default; h=from:to:date:subject; bh=2jmj7l5rSw0yVb/vlWAYkK/YBwk=; b=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 ```
-
-## API
-
-Constructor:
-
-- new Signature( options )
-- Signature.create( options )
-- Signature.parse( header )
-
-Methods:
-
-- signature.parse( header )
-- signature.toString()
