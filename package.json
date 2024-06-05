@@ -12,18 +12,9 @@
     "signature",
     "domainkeys",
     "domainkey",
-    "message"
+    "rfc6376"
   ],
   "main": "lib/signature.js",
-  "types": "lib/signature.d.ts",
-  "scripts": {
-    "test": "control test",
-    "benchmark": "node benchmark"
-  },
-  "devDependencies": {
-    "@jhermsmeier/control": "2.0.3",
-    "nanobench": "2.1.1"
-  },
   "homepage": "https://github.com/jhermsmeier/node-dkim-signature",
   "repository": {
     "type": "git",
@@ -31,5 +22,16 @@
   },
   "bugs": {
     "url": "https://github.com/jhermsmeier/node-dkim-signature/issues"
+  },
+  "scripts": {
+    "test": "control test",
+    "benchmark": "node benchmark"
+  },
+  "dependencies": {
+    "dkim-quoted-printable": "1.0.1"
+  },
+  "devDependencies": {
+    "@jhermsmeier/control": "2.0.3",
+    "nanobench": "2.1.1"
   }
 }
