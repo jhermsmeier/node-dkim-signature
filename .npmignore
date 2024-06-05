@@ -2,5 +2,6 @@
 *.md
 *.log
 
-test
 benchmark
+example
+test
