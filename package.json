@@ -1,6 +1,6 @@
 {
   "name": "dkim-signature",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "DomainKey Identified Mail (DKIM) Signature",
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de)",
   "license": "MIT",
@@ -12,6 +12,8 @@
     "signature",
     "domainkeys",
     "domainkey",
+    "rfc4870",
+    "rfc4871",
     "rfc6376"
   ],
   "main": "lib/signature.js",
