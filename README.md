@@ -9,6 +9,14 @@
 $ npm install dkim-signature
 ```
 
+## Related Modules
+
+- [DKIM] - Verify message signatures, fetch DKIM public keys, etc.
+- [DKIM Key] - Parse or construct DKIM key records
+
+[DKIM]: https://github.com/jhermsmeier/node-dkim
+[DKIM Key]: https://github.com/jhermsmeier/node-dkim-key
+
 ## Usage
 
 ```js
