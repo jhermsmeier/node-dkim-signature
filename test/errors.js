@@ -14,6 +14,15 @@ context( 'DKIMSignature', () => {
 
     })
 
+    test( 'Tag name case sensitivity', () => {
+
+      assert.throws(() => {
+        var value = 'V=1; a=rsa-sha1; d=example.test; s=default; h=from:to:subject:date; bh=2jmj7l5rSw0yVb/vlWAYkK/YBwk=; b=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+        DKIMSignature.parse( value )
+      }, /Missing version/ )
+
+    })
+
     context( 'Required tags', () => {
 
       test( 'Missing / invalid / unknown version', () => {
