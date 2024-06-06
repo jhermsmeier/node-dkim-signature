@@ -177,6 +177,15 @@ context( 'DKIMSignature', () => {
 
       })
 
+      test( 'Invalid base64 data', () => {
+
+        assert.throws(() => {
+          var value = 'v=1; a=rsa-sha1; d=example.test; s=default; h=from:to:subject:date; bh=--; b=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+          DKIMSignature.parse( value )
+        }, /Invalid base64/ )
+
+      })
+
     })
 
   })
